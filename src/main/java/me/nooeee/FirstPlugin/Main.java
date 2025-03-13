@@ -1,6 +1,8 @@
 package me.nooeee.FirstPlugin;
 
 import me.nooeee.FirstPlugin.commands.CommandBroadcast;
+import me.nooeee.FirstPlugin.utils.commands.SimpleCommand;
+import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -9,6 +11,17 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         System.out.println("It works !");
 
-        getCommand("broadcast").setExecutor(new CommandBroadcast());
+        createCommand(new SimpleCommand(
+                "broadcast",
+                "Envoyer un message pour tous les joueurs du serveur",
+                new CommandBroadcast(),
+                "bc"
+        ));
+    }
+
+    private void createCommand(SimpleCommand command) {
+        CraftServer server = (CraftServer) getServer(); // Récupérer le serveur où est effectué la commande
+        server.getCommandMap().register(getName(), command);
+        // getName() : nom du plugin, permet de déterminer quelle commande appartient à quel plugin
     }
 }
