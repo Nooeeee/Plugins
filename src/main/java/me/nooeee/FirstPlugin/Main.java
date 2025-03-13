@@ -1,5 +1,6 @@
 package me.nooeee.FirstPlugin;
 
+import me.nooeee.FirstPlugin.EventListener;
 import me.nooeee.FirstPlugin.commands.CommandBroadcast;
 import me.nooeee.FirstPlugin.utils.commands.SimpleCommand;
 import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
@@ -17,6 +18,10 @@ public class Main extends JavaPlugin {
                 new CommandBroadcast(),
                 "bc"
         ));
+
+        // Implements EventListener
+        getServer().getPluginManager().registerEvents(new EventListener(), this);
+        System.out.println("Events registered !");
     }
 
     private void createCommand(SimpleCommand command) {
