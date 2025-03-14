@@ -1,7 +1,7 @@
 package me.nooeee.FirstPlugin;
 
-import me.nooeee.FirstPlugin.EventListener;
 import me.nooeee.FirstPlugin.commands.CommandBroadcast;
+import me.nooeee.FirstPlugin.listeners.JoinLeaveListener;
 import me.nooeee.FirstPlugin.utils.commands.SimpleCommand;
 import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,7 +20,7 @@ public class Main extends JavaPlugin {
         ));
 
         // Implements EventListener
-        getServer().getPluginManager().registerEvents(new EventListener(), this);
+        getServer().getPluginManager().registerEvents(new JoinLeaveListener(this), this);
         System.out.println("Events registered !");
     }
 
