@@ -1,6 +1,7 @@
 package me.nooeee.FirstPlugin;
 
 import me.nooeee.FirstPlugin.commands.CommandBroadcast;
+import me.nooeee.FirstPlugin.commands.CommandFeed;
 import me.nooeee.FirstPlugin.listeners.JoinLeaveListener;
 import me.nooeee.FirstPlugin.utils.commands.CommandGamemode;
 import me.nooeee.FirstPlugin.utils.commands.SimpleCommand;
@@ -50,6 +51,12 @@ public class Main extends JavaPlugin {
                 ""
         ));
 
+        createCommand(new SimpleCommand(
+                "feed",
+                "Nourrit complètement le joueur.",
+                new CommandFeed(),
+                ""
+        ));
     }
 
     private void createCommand(SimpleCommand command) {
