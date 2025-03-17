@@ -2,6 +2,8 @@ package me.nooeee.FirstPlugin;
 
 import me.nooeee.FirstPlugin.commands.CommandBroadcast;
 import me.nooeee.FirstPlugin.commands.CommandFeed;
+import me.nooeee.FirstPlugin.commands.CommandGodMode;
+import me.nooeee.FirstPlugin.commands.CommandSpawn;
 import me.nooeee.FirstPlugin.listeners.JoinLeaveListener;
 import me.nooeee.FirstPlugin.utils.commands.CommandGamemode;
 import me.nooeee.FirstPlugin.utils.commands.SimpleCommand;
@@ -10,6 +12,8 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Objects;
 
 public class Main extends JavaPlugin {
 
@@ -22,6 +26,7 @@ public class Main extends JavaPlugin {
         System.out.println("Events enregistrés !");
 
         // Implements Commands
+        getCommand("god").setExecutor(new CommandGodMode());
         registerCommand();
         System.out.println("Commandes enregistrées !");
     }
@@ -100,6 +105,14 @@ public class Main extends JavaPlugin {
                 "feed",
                 "Nourrit entièrement le joueur.",
                 new CommandFeed(),
+                ""),
+                ""
+        );
+
+        createCommand(new SimpleCommand(
+                "feed",
+                "Nourrit entièrement le joueur.",
+                new CommandSpawn(),
                 ""),
                 ""
         );
