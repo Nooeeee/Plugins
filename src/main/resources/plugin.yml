@@ -4,7 +4,7 @@ api-version: 1.20 # version de Spigot pour laquelle le plugin est fait
 main: me.nooeee.FirstPlugin.Main
 commands:
   spawn:
-    description: Permet au joueur de se téléporter au spawn.
+    description: Se téléporter au spawn.
     permission: myplugins.command.use
     permission-message: "§cVous n'avez pas la permission d'utiliser cette commande." # Ne marche pas : command not found
     aliases: lobby
@@ -13,6 +13,28 @@ commands:
     usage: /<command> #<player>
     permission: myplugins.command.godmode
     permission-message: "§cVous n'avez pas la permission d'utiliser cette commande."
-    aliases:
-    - invincible
-    - gm
+    aliases: invincible
+  gma:
+    description: Met le mode Adventure au joueur.
+    usage: /<command> <player>
+  gms:
+    description: Met le mode Survival au joueur.
+    usage: /<command> <player>
+    permission: myplugins.command.gamemode.survival
+  gmc:
+    description: Met le mode Creative au joueur.
+    usage: /<command> <player>
+    permission: myplugins.command.gamemode.creative
+  gmsp:
+    description: Met le mode Spectator au joueur.
+    usage: /<command> <player>
+    permission: myplugins.command.gamemode.spectator
+
+
+  broadcast:
+    description: Faire des annonces pour tous les joueurs.
+    usage: /<command> <message>
+    permission: myplugins.command.broadcast
+    aliases: bc
+  feed:
+    description: Rassasie entièrement la faim du joueur
