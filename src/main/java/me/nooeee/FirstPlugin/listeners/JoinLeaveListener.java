@@ -7,43 +7,41 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class JoinLeaveListener implements Listener {
 
-    private final Plugin plugin;
+    private final Main plugin;
 
-    public JoinLeaveListener(Plugin plugin) {
+    public JoinLeaveListener(Main plugin) {
         this.plugin = plugin;
     }
 
+
     @EventHandler
-    public void onJoin(PlayerJoinEvent e) {
+    public void onPlayerJoin(PlayerJoinEvent e) {
 
+        // Message global
         Player player = e.getPlayer();
-
-        // Envoyer à tous les joueurs connectés
         e.setJoinMessage("[" + ChatColor.GREEN + "+" + ChatColor.RESET + "] " + ChatColor.BOLD + player.getDisplayName());
 
+        // 0.5 sec plus tard =>
         new BukkitRunnable() {
             @Override
             public void run() {
-                if(player.hasPlayedBefore()) {
-                    // Envoyer seulement au joueur concerné
-                    player.sendMessage(ChatColor.GREEN + "Bon retour parmis nous " + ChatColor.RESET + ChatColor.BOLD + "" + ChatColor.GOLD + player.getDisplayName() + ChatColor.RESET + "" + ChatColor.GREEN + ", tu nous avais manqué.");
-                } else {
-                    player.sendMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "Bienvenue sur le serveur " + ChatColor.RESET + "" + ChatColor.GOLD + "" + ChatColor.BOLD + player.getDisplayName() + ChatColor.RESET + "" + ChatColor.BLUE + "" + ChatColor.BOLD + ", en espérant que tu t'y plaises !" );
+                String joinMessage = plugin.getConfig().getString("join-message");
+                if(joinMessage != null) {
+                    joinMessage = joinMessage.replace("%player%", e.getPlayer().getDisplayName());
+                    e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', joinMessage));
                 }
             }
-        }.runTaskLater(plugin, 10L); // 10 Ticks = 0.5sec
+        }.runTaskLater(plugin, 10L);
     }
 
     @EventHandler
-    public void onLeave(PlayerQuitEvent e) {
+    public void onPlayerLeave(PlayerQuitEvent e) {
 
         Player player = e.getPlayer();
-        // Envoyer à tous les joueurs connectés
         e.setQuitMessage("[" + ChatColor.RED + "-" + ChatColor.RESET + "] " + ChatColor.BOLD + player.getDisplayName());
     }
 }

@@ -1,9 +1,6 @@
 package me.nooeee.FirstPlugin;
 
-import me.nooeee.FirstPlugin.commands.CommandBroadcast;
-import me.nooeee.FirstPlugin.commands.CommandFeed;
-import me.nooeee.FirstPlugin.commands.CommandGodMode;
-import me.nooeee.FirstPlugin.commands.CommandSpawn;
+import me.nooeee.FirstPlugin.commands.*;
 import me.nooeee.FirstPlugin.listeners.JoinLeaveListener;
 import me.nooeee.FirstPlugin.utils.commands.CommandGamemode;
 import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
@@ -25,6 +22,10 @@ public class Main extends JavaPlugin {
         // Implements Commands
         registerCommand();
         System.out.println("Commandes enregistrées !");
+
+        // config.yml
+        saveDefaultConfig(); // vérif si config.yml existe déjà et copie fichier par défaut
+        getConfig().options().copyDefaults();
     }
 
     private void createListener(Listener listener) {
@@ -39,6 +40,7 @@ public class Main extends JavaPlugin {
 
     // Commands
     private void registerCommand() {
+        Objects.requireNonNull(getCommand("setmessage")).setExecutor(new CommandSetMessage(this));
 
         Objects.requireNonNull(getCommand("spawn")).setExecutor(new CommandSpawn());
         Objects.requireNonNull(getCommand("feed")).setExecutor(new CommandFeed());

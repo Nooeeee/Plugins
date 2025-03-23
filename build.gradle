@@ -16,4 +16,9 @@ dependencies {
 
 sourceCompatibility = targetCompatibility = '21'
 compileJava.options.encoding = 'UTF-8'
-setLibsDirName('../server/plugins')
+
+
+// Configurer la destination du JAR
+tasks.withType(Jar) {
+    destinationDirectory = file("./server/plugins")
+}

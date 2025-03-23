@@ -3,6 +3,12 @@ version: 1.0
 api-version: 1.20 # version de Spigot pour laquelle le plugin est fait
 main: me.nooeee.FirstPlugin.Main
 commands:
+  setmessage:
+    description: Set the join message for the server
+    permission: myplugins.command.admin
+    alisases:
+    - setjoinmessage
+    - joinmessage
   spawn:
     description: Se téléporter au spawn.
     permission: myplugins.command.use
