@@ -3,6 +3,7 @@ package me.nooeee.FirstPlugin;
 import me.nooeee.FirstPlugin.commands.*;
 import me.nooeee.FirstPlugin.listeners.JoinLeaveListener;
 import me.nooeee.FirstPlugin.utils.commands.CommandGamemode;
+import me.nooeee.FirstPlugin.utils.commands.CooldownCommandManager;
 import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -10,6 +11,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Objects;
 
 public class Main extends JavaPlugin {
+
+    private CooldownCommandManager cooldownCommandManager;
 
     @Override
     public void onEnable() {
@@ -26,6 +29,9 @@ public class Main extends JavaPlugin {
         // config.yml
         saveDefaultConfig(); // vérif si config.yml existe déjà et copie fichier par défaut
         getConfig().options().copyDefaults();
+
+        // Implements CooldownManager
+        cooldownCommandManager = new CooldownCommandManager(getConfig());
     }
 
     private void createListener(Listener listener) {
@@ -43,7 +49,7 @@ public class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("setmessage")).setExecutor(new CommandSetMessage(this));
 
         Objects.requireNonNull(getCommand("spawn")).setExecutor(new CommandSpawn());
-        Objects.requireNonNull(getCommand("feed")).setExecutor(new CommandFeed());
+        Objects.requireNonNull(getCommand("feed")).setExecutor(new CommandFeed(cooldownCommandManager));
 
         Objects.requireNonNull(getCommand("broadcast")).setExecutor(new CommandBroadcast());
         Objects.requireNonNull(getCommand("god")).setExecutor(new CommandGodMode());
