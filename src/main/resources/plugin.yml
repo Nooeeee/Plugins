@@ -35,7 +35,10 @@ commands:
     description: Met le mode Spectator au joueur.
     usage: /<command> <player>
     permission: myplugins.command.gamemode.spectator
-
+  heal:
+    description: Soigne le joueur.
+    usage: /<command> <player>
+    permission: myplugins.command.heal
 
   broadcast:
     description: Faire des annonces pour tous les joueurs.

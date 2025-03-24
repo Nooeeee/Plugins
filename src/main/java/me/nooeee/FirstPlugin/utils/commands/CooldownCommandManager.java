@@ -21,13 +21,13 @@ public class CooldownCommandManager {
     public void loadCooldowns(FileConfiguration config) {
         cooldownTimes.clear();
 
-        if(config.contains("cooldown") || config.getConfigurationSection("cooldowns") == null) {
-            System.out.println("Aucune section 'cooldown' trouvée dans le config.yml !");
+        if(!config.contains("cooldowns") || config.getConfigurationSection("cooldowns") == null) {
+            System.out.println("Aucune section 'cooldowns' trouvée dans le config.yml !");
             return;
         }
 
-        for (String command : config.getConfigurationSection("cooldowns").getKeys(false)) {
-            cooldownTimes.put(command, config.getInt("cooldowns" + command ));
+        for(String command : config.getConfigurationSection("cooldowns").getKeys(false)) {
+            cooldownTimes.put(command, config.getInt("cooldowns." + command ));
         }
     }
 

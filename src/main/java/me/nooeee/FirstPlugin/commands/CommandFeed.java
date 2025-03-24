@@ -30,7 +30,7 @@ public class CommandFeed implements CommandExecutor {
 
         if(cooldownManager.isOnCooldown(player, "feed")) {
             int timeLeft = cooldownManager.getTimeLeft(player, "feed");
-            player.sendMessage("&cVeuillez patienter " + timeLeft + " secondes avant de réutiliser cette commande.");
+            player.sendMessage(ChatColor.RED + "Veuillez patienter " + timeLeft + " secondes avant de réutiliser cette commande.");
             return true;
         }
 
