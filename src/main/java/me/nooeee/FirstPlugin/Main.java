@@ -47,8 +47,10 @@ public class Main extends JavaPlugin {
 
     // Commands
     private void registerCommand() {
+        // Commandes système
         Objects.requireNonNull(getCommand("setmessage")).setExecutor(new CommandSetMessage(this));
 
+        // Commandes essentielles
         Objects.requireNonNull(getCommand("spawn")).setExecutor(new CommandSpawn());
         Objects.requireNonNull(getCommand("feed")).setExecutor(new CommandFeed(cooldownCommandManager));
         Objects.requireNonNull(getCommand("heal")).setExecutor(new CommandHeal(cooldownCommandManager));
@@ -56,11 +58,14 @@ public class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("broadcast")).setExecutor(new CommandBroadcast());
         Objects.requireNonNull(getCommand("god")).setExecutor(new CommandGodMode());
 
-        // GameMode
+        // Commandes GameModes
         Objects.requireNonNull(getCommand("gma")).setExecutor(new CommandGamemode());
         Objects.requireNonNull(getCommand("gms")).setExecutor(new CommandGamemode());
         Objects.requireNonNull(getCommand("gmc")).setExecutor(new CommandGamemode());
         Objects.requireNonNull(getCommand("gmsp")).setExecutor(new CommandGamemode());
+
+        // Commandes facultatives
+        Objects.requireNonNull(getCommand("flower")).setExecutor(new CommandFlower(cooldownCommandManager));
 
     }
 }

@@ -39,6 +39,9 @@ commands:
     description: Soigne le joueur.
     usage: /<command> <player>
     permission: myplugins.command.heal
+  flower:
+    description: Donne une fleur au joueur.
+    usage: <command> <player>
 
   broadcast:
     description: Faire des annonces pour tous les joueurs.
