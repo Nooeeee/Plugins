@@ -42,6 +42,9 @@ commands:
   flower:
     description: Donne une fleur au joueur.
     usage: <command> <player>
+  menu:
+    description: Ouvre un menu.
+    usage: /<command>
 
   broadcast:
     description: Faire des annonces pour tous les joueurs.

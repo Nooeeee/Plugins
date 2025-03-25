@@ -2,6 +2,7 @@ package me.nooeee.FirstPlugin;
 
 import me.nooeee.FirstPlugin.commands.*;
 import me.nooeee.FirstPlugin.listeners.JoinLeaveListener;
+import me.nooeee.FirstPlugin.listeners.MenuListener;
 import me.nooeee.FirstPlugin.utils.commands.CommandGamemode;
 import me.nooeee.FirstPlugin.utils.commands.CooldownCommandManager;
 import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
@@ -43,6 +44,7 @@ public class Main extends JavaPlugin {
     // Listener
     private void registerListener() {
         createListener(new JoinLeaveListener(this));
+        createListener(new MenuListener(this));
     }
 
     // Commands
@@ -65,6 +67,7 @@ public class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("gmsp")).setExecutor(new CommandGamemode());
 
         // Commandes facultatives
+        Objects.requireNonNull(getCommand("menu")).setExecutor(new CommandMenu());
         Objects.requireNonNull(getCommand("flower")).setExecutor(new CommandFlower(cooldownCommandManager));
 
     }
