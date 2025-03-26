@@ -59,6 +59,7 @@ public class Main extends JavaPlugin {
 
         Objects.requireNonNull(getCommand("broadcast")).setExecutor(new CommandBroadcast());
         Objects.requireNonNull(getCommand("god")).setExecutor(new CommandGodMode());
+        Objects.requireNonNull(getCommand("fly")).setExecutor(new CommandFly());
 
         // Commandes GameModes
         Objects.requireNonNull(getCommand("gma")).setExecutor(new CommandGamemode());

@@ -45,6 +45,10 @@ commands:
   menu:
     description: Ouvre un menu.
     usage: /<command>
+  fly:
+    description: Activer/Désactiver le fly.
+    usage: /<command>
+    permission: myplugins.command.fly
 
   broadcast:
     description: Faire des annonces pour tous les joueurs.
