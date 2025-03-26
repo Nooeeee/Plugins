@@ -28,7 +28,7 @@ public class MenuListener implements Listener {
             ChaColor.stripColor(e.getView().getTitle().equals("Custom Gui"))
         */
 
-        if(e.getView().getTitle().equalsIgnoreCase("Custom GUI")); {
+        if(e.getView().getTitle().equals(ChatColor.AQUA + "Custom GUI")) {
 
             if(e.isRightClick()) return;
 
@@ -51,6 +51,9 @@ public class MenuListener implements Listener {
                     player.sendMessage(ChatColor.BLUE + "" + ChatColor.ITALIC + "Ne souille pas ton honneur, guerrier !");
                     break;
             }
+
+            // Close le GUI une fois cliquée
+            player.closeInventory();
         }
     }
 }
